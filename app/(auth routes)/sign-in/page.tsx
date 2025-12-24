@@ -70,7 +70,7 @@ const SignIn = () => {
         {error && <p className={css.error}>{error}</p>}
 
         <p className={css.signUpText}>
-          You dont have any account?
+          You don`t have any account?
         </p>
         <p>
           <Link href="/sign-up">Sign Up</Link>

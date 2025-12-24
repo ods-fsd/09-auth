@@ -44,7 +44,7 @@ const SignUp = () => {
               id="email"
               type="email"
               name="email"
-              placeholder="yourmail@gamil.com"
+              placeholder="yourmail@gmail.com"
               className={css.input}
               required
             />
@@ -71,7 +71,7 @@ const SignUp = () => {
           {error && <p className={css.error}>{error}</p>}
 
           <p className={css.signInText}>
-            Have you alredy account?
+            Do you already have an account?
           </p>
           <p>
             <Link href="/sign-in">Sign In</Link>
