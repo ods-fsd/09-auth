@@ -6,9 +6,6 @@ const Footer = () => {
   return (
     <footer className={css.footer}>
       <div className={css.content}>
-        <p className={css.copy}>
-          © {new Date().getFullYear()} NoteHub. All rights reserved.
-        </p>
         <div className={css.wrap}>
           <p className={css.dev}>
             <FiCode className={css.icon} /> Developer: Denys Orlyk
@@ -22,6 +19,9 @@ const Footer = () => {
               denys.orlyk@gmail.com
             </a>
           </p>
+          <p className={css.copy}>
+          © {new Date().getFullYear()} NoteHub. All rights reserved.
+        </p>
         </div>
       </div>
     </footer>
