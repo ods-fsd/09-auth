@@ -1,55 +1,55 @@
-import type { Metadata } from 'next';
-import { Roboto } from 'next/font/google'; 
-import './globals.css';
-import React from 'react';
-import Header from '@/components/Header/Header';
-import Footer from '@/components/Footer/Footer';
-import TanStackProvider from '@/components/TanStackProvider/TanStackProvider';
-
+import type { Metadata } from "next";
+import { Roboto } from "next/font/google";
+import "./globals.css";
+import Header from "../components/Header/Header";
+import Footer from "../components/Footer/Footer";
+import TanStackProvider from "../components/TanStackProvider/TanStackProvider";
+import AuthProvider from "@/components/AuthProvider/AuthProvider";
 
 const roboto = Roboto({
-  weight: ['400', '500', '700'], 
-  subsets: ['latin'],
-  variable: '--font-roboto', 
-  display: 'swap',
+  variable: "--font-roboto",
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: 'NoteHub - Organize Your Daily Tasks and Notes', 
-  description: 'A simple and efficient application to manage your notes, tasks, and ideas in one place.', 
+  title: "NoteHub",
+  description: "Create your own notes and you will never forget anything.",
   openGraph: {
-    title: 'NoteHub - Organize Your Daily Tasks and Notes',
-    description: 'A simple and efficient application to manage your notes, tasks, and ideas in one place.',
-    url: 'https://08-zustand-lyart-pi.vercel.app/', 
-    siteName: 'NoteHub',
+    title: "Notehub",
+    description: "Create your own notes and you will never forget anything.",
+    url: "https://08-zustand-two-pi.vercel.app",
     images: [
       {
-        url: 'https://ac.goit.global/fullstack/react/notehub-og-meta.jpg', 
+        url: "https://ac.goit.global/fullstack/react/notehub-og-meta.jpg",
         width: 1200,
         height: 630,
-        alt: 'NoteHub Application Preview',
+        alt: "Notehub",
       },
     ],
-    locale: 'en_US',
-    type: 'website',
   },
 };
 
-interface RootLayoutProps {
+export default function RootLayout({
+  children,
+  modal,
+}: Readonly<{
   children: React.ReactNode;
   modal: React.ReactNode;
-}
-
-export default function RootLayout({ children, modal }: RootLayoutProps) {
+}>) {
   return (
     <html lang="en">
-      {/* Використовуємо змінну шрифту Roboto */}
       <body className={roboto.variable}>
         <TanStackProvider>
-          <Header />
-          {children}
-          {modal} 
-          <Footer />
+          <AuthProvider>
+            <Header />
+            <main>
+              {modal}
+              {children}
+            </main>
+            <Footer />
+          </AuthProvider>
         </TanStackProvider>
       </body>
     </html>

@@ -1,26 +1,27 @@
-import Link from 'next/link';
-import css from './Header.module.css';
+import Link from "next/link";
+import React from "react";
+import { FiHome } from "react-icons/fi";
+import css from "./Header.module.css";
+import AuthNavigation from "../AuthNavigation/AuthNavigation";
 
-export default function Header() {
+const Header = () => {
   return (
     <header className={css.header}>
-      <Link href="/" className={css.headerLink} aria-label="Home">
+      <Link href="/" aria-label="Home" className={css.logo}>
         NoteHub
       </Link>
       <nav aria-label="Main Navigation">
         <ul className={css.navigation}>
-          <li className={css.navigationItem}>
-            <Link href="/" className={css.navigationLink}>
-              Home
+          <li>
+            <Link href="/" className={css.navLink}>
+              <FiHome className={css.icon} /> Home
             </Link>
           </li>
-          <li className={css.navigationItem}>
-            <Link href="/notes/filter/all" className={css.navigationLink}>
-              Notes
-            </Link>
-          </li>
+          <AuthNavigation />
         </ul>
       </nav>
     </header>
   );
-}
+};
+
+export default Header;

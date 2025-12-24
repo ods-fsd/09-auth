@@ -1,10 +1,9 @@
-import css from './ErrorMessage.module.css';
-
-export default function ErrorMessage() {
+const ErrorMessage = () => {
   return (
     <div>
-      <span className={css.icon}>⚠️</span>
-      <p className={css.text}>Something went wrong. Please try again later.</p>
+      <p>Something went wrong.</p>
     </div>
   );
-}
+};
+
+export default ErrorMessage;

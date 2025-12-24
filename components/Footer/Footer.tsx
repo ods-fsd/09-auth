@@ -1,18 +1,31 @@
+import React from "react";
+import { FiMail, FiCode } from "react-icons/fi";
 import css from "./Footer.module.css";
 
-export default function Footer() {
-  return (                               
-<footer className={css.footer}>
-  <div className={css.content}>
-    <p>© {new Date().getFullYear()} NoteHub. All rights reserved.</p>
-    <div className={css.wrap}>
-      <p>Developer: Denys Orlyk</p>
-      <p>
-        Contact us: 
-        <a href="mailto:i.ds.orlik@gmail.com"> i.ds.orlik@gmail.com</a>
-      </p>
-    </div>
-  </div>
-        </footer> 
-    );
-}
+const Footer = () => {
+  return (
+    <footer className={css.footer}>
+      <div className={css.content}>
+        <p className={css.copy}>
+          © {new Date().getFullYear()} NoteHub. All rights reserved.
+        </p>
+        <div className={css.wrap}>
+          <p className={css.dev}>
+            <FiCode className={css.icon} /> Developer: Denys Orlyk
+          </p>
+          <p className={css.contact}>
+            <FiMail className={css.icon} /> Contact us:{" "}
+            <a
+              className={css.email}
+              href="mailto:denys.orlyk@gmail.com"
+            >
+              denys.orlyk@gmail.com
+            </a>
+          </p>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;

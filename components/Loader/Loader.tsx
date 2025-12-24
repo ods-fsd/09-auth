@@ -1,9 +1,26 @@
-import css from './Loader.module.css';
+import { ClipLoader } from "react-spinners";
+import { useState } from "react";
+import type { CSSProperties } from "react";
 
-export default function Loader() {
+const override: CSSProperties = {
+  display: "block",
+  margin: "0 auto",
+  borderColor: "red",
+};
+
+const Loader = () => {
+  const [color] = useState("#ffffff");
   return (
-    <div className={css.loaderContainer}>
-      <p className={css.text}>Loading notes, please wait...</p>
-    </div>
+    <>
+      <ClipLoader
+        color={color}
+        cssOverride={override}
+        size={150}
+        aria-label="Loading Spinner"
+        data-testid="loader"
+      />
+    </>
   );
-}
+};
+
+export default Loader;
