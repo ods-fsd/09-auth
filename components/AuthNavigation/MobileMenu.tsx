@@ -3,10 +3,11 @@ import React, { useState } from "react";
 import css from "./MobileMenu.module.css";
 import { Ultra } from "next/font/google";
 import Link from "next/link";
+import User from "@/types/user";
 
 interface MobileProps {
   isAuthenticated: boolean;
-  user: { email: string };
+  user: User | null;
   handleLogout: () => void;
 }
 

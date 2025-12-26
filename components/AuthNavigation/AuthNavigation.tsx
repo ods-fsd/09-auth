@@ -26,7 +26,7 @@ const AuthNavigation = () => {
         </Link>
       </li>
       <li className={css.navigationItem}>
-        <p className={css.userEmail}>{user!.email}</p>
+        <p className={css.userEmail}>{user?.email}</p>
         <button onClick={handleClick} className={css.logoutButton}>
           Logout
         </button>
@@ -47,7 +47,7 @@ const AuthNavigation = () => {
 
       <MobileMenu
         isAuthenticated={isAuthenticated}
-        user={user!}
+        user={user}
         handleLogout={handleClick}
       />
     </>
