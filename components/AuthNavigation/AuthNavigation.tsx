@@ -4,7 +4,6 @@ import css from "./AuthNavigation.module.css";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { logOut } from "@/lib/api/clientApi";
-import TagsMenu from "../TagsMenu/TagsMenu";
 import MobileMenu from "./MobileMenu";
 const AuthNavigation = () => {
   const { user, isAuthenticated, clearAuth } = useAuth();
@@ -17,9 +16,7 @@ const AuthNavigation = () => {
   };
   return isAuthenticated ? (
     <>
-      <li className={css.navigationItem}>
-        <TagsMenu />
-      </li>
+      
       <li className={css.navigationItem}>
         <Link href="/profile" prefetch={false} className={css.navigationLink}>
           Profile

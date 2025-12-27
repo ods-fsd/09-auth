@@ -17,6 +17,11 @@ const Header = () => {
               <FiHome className={css.icon} /> Home
             </Link>
           </li>
+          <li className={css.navigationItem}>
+            <Link href="/notes/filter/All" className={css.navigationLink}>
+              Notes
+            </Link>
+          </li>
           <AuthNavigation />
         </ul>
       </nav>
