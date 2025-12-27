@@ -1,3 +1,4 @@
+// types/note.ts
 export interface Note {
   id: string;
   title: string;
@@ -7,7 +8,17 @@ export interface Note {
   updatedAt: string;
 }
 
-export type Tag = "Todo" | "Work" | "Personal" | "Meeting" | "Shopping";
+export type Tag =
+  | "Todo"
+  | "Work"
+  | "Personal"
+  | "Meeting"
+  | "Shopping"
+  | "Ideas"
+  | "Travel"
+  | "Finance"
+  | "Health"
+  | "Important";
 
 export const tagList: Tag[] = [
   "Todo",
@@ -15,10 +26,15 @@ export const tagList: Tag[] = [
   "Personal",
   "Meeting",
   "Shopping",
+  "Ideas",
+  "Travel",
+  "Finance",
+  "Health",
+  "Important",
 ];
 
 export interface NoteDraft {
   title?: string;
   content?: string;
-  tag?: "Todo";
+  tag?: Tag;
 }

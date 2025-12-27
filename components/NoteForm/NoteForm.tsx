@@ -6,17 +6,19 @@ import { useRouter } from "next/navigation";
 import { useDraftNote } from "@/lib/store/noteStore";
 import { ChangeEvent } from "react";
 import { createNote } from "@/lib/api/clientApi";
+import { Tag, tagList } from "@/types/note"; 
 
 type CreateNote = {
   title: string;
   content: string;
-  tag: "Todo" | "Work" | "Personal" | "Meeting" | "Shopping";
+  tag: Tag;
 };
 
 const NoteForm = () => {
   const router = useRouter();
   const queryClient = useQueryClient();
   const { setDraft, clearDraft, draft } = useDraftNote();
+  
   const mutation = useMutation({
     mutationFn: (newTask: CreateNote) => createNote(newTask),
     onSuccess: () => {
@@ -24,7 +26,6 @@ const NoteForm = () => {
       toast.success("You have successfully created a new note!");
       clearDraft();
       router.push("/notes/filter/All");
-      //для того щоб нотатки обновились
     },
     onError: () => {
       toast.error("Something went wrong...try again.");
@@ -37,7 +38,7 @@ const NoteForm = () => {
       mutation.mutate({
         title: data.title,
         content: data.content,
-        tag: data.tag,
+        tag: (draft?.tag as Tag) || data.tag || tagList[0],
       });
     }
   };
@@ -74,6 +75,7 @@ const NoteForm = () => {
           name="title"
           className={css.input}
           onChange={createDraft}
+          required 
         />
       </div>
 
@@ -86,23 +88,26 @@ const NoteForm = () => {
           name="content"
           className={css.textarea}
           rows={8}
+          required 
         />
       </div>
 
       <div className={css.formGroup}>
         <label htmlFor="tag">Tag</label>
         <select
-          value={draft?.tag ?? ""}
+
+          value={draft?.tag ?? tagList[0]}
           id="tag"
           name="tag"
           className={css.select}
           onChange={createDraft}
         >
-          <option value="Todo">Todo</option>
-          <option value="Work">Work</option>
-          <option value="Personal">Personal</option>
-          <option value="Meeting">Meeting</option>
-          <option value="Shopping">Shopping</option>
+
+          {tagList.map((tag) => (
+            <option key={tag} value={tag}>
+              {tag}
+            </option>
+          ))}
         </select>
       </div>
 
@@ -114,7 +119,7 @@ const NoteForm = () => {
         >
           Cancel
         </button>
-        <button type="submit" className={css.submitButton} disabled={false}>
+        <button type="submit" className={css.submitButton}>
           Create note
         </button>
       </div>

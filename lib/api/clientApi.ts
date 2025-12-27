@@ -1,11 +1,13 @@
-import type { Note } from "@/types/note";
+import type { Note, Tag } from "@/types/note";
 import type User from "@/types/user";
 import { nextServer } from "./api";
+
 export type RegisterRequest = {
   email: string;
   password: string;
   username: string;
 };
+
 interface PatchMeResponse {
   username: string;
 }
@@ -22,7 +24,7 @@ interface CreateNoteResponse {
 interface CreateNote {
   title: string;
   content: string;
-  tag: "Todo" | "Work" | "Personal" | "Meeting" | "Shopping";
+  tag: Tag;
 }
 
 interface FetchNotesResponse {
@@ -47,7 +49,7 @@ export const fetchNotes = async (
     params: {
       search: query,
       page: currentPage,
-      perPage: 10,
+      perPage: 12,
       tag: tag,
     },
   });

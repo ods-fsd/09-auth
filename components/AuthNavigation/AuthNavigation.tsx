@@ -4,7 +4,9 @@ import css from "./AuthNavigation.module.css";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { logOut } from "@/lib/api/clientApi";
+
 import MobileMenu from "./MobileMenu";
+
 const AuthNavigation = () => {
   const { user, isAuthenticated, clearAuth } = useAuth();
   const router = useRouter();
@@ -14,9 +16,9 @@ const AuthNavigation = () => {
     clearAuth();
     router.replace("/sign-in");
   };
+
   return isAuthenticated ? (
     <>
-      
       <li className={css.navigationItem}>
         <Link href="/profile" prefetch={false} className={css.navigationLink}>
           Profile
